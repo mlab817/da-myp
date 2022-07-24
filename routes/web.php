@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\PapController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,16 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::post('/logout', function () {
-    auth()->logout();
-
-    return redirect()->route(\App\Providers\RouteServiceProvider::HOME);
-})->name('logout');
-
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+});
+
+Route::resource('paps', PapController::class);
+
+Route::resource('users', UserController::class);

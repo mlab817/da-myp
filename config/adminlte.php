@@ -247,11 +247,22 @@ return [
             'can'  => 'manage-blog',
         ],
         [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
+            'text'        => 'Dashboard',
+            'url'         => '/dashboard',
+            'icon'        => 'fas fa-home',
             'label_color' => 'success',
+        ],
+        [
+            'text'          => 'PAPs',
+            'url'           => '/paps',
+            'icon'          => 'fas fa-list',
+            'label_color'   => ''
+        ],
+        [
+            'text'          => 'Users',
+            'url'           => '/users',
+            'icon'          => 'fas fa-users',
+            'label_color'   => ''
         ],
         ['header' => 'account_settings'],
         [

@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\OfficeController;
+use App\Http\Controllers\OperatingUnitController;
 use App\Http\Controllers\PapController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -22,6 +24,10 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 Route::get('/dashboard', function () {
     return view('dashboard');
 });
+
+Route::resource('offices', OfficeController::class);
+
+Route::resource('operating-units', OperatingUnitController::class);
 
 Route::resource('paps', PapController::class);
 

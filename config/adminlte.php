@@ -188,7 +188,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'home',
+    'dashboard_url' => 'dashboard',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -256,6 +256,18 @@ return [
             'text'          => 'PAPs',
             'url'           => '/paps',
             'icon'          => 'fas fa-list',
+            'label_color'   => ''
+        ],
+        [
+            'text'          => 'Operating Units',
+            'url'           => '/operating-units',
+            'icon'          => 'fas fa-cogs',
+            'label_color'   => ''
+        ],
+        [
+            'text'          => 'Offices',
+            'url'           => '/offices',
+            'icon'          => 'fas fa-building',
             'label_color'   => ''
         ],
         [

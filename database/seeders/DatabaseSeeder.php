@@ -6,6 +6,7 @@ namespace Database\Seeders;
 use App\Models\Commodity;
 use App\Models\CommoditySystem;
 use App\Models\Location;
+use App\Models\OperatingUnit;
 use App\Models\Prexc;
 use App\Models\Program;
 use App\Models\Role;
@@ -400,6 +401,59 @@ class DatabaseSeeder extends Seeder
                     }
                 }
             }
+        }
+
+        $ous = [
+//            'Office of the Secretary' => [
+                'DA - Central Office',
+                'Regional Field Office I',
+                'Regional Field Office CAR',
+                'Regional Field Office II',
+                'Regional Field Office III',
+                'Regional Field Office IVA',
+                'Regional Field Office IVB',
+                'Regional Field Office V',
+                'Regional Field Office VI',
+                'Regional Field Office VII',
+                'Regional Field Office VIII',
+                'Regional Field Office IX',
+                'Regional Field Office X',
+                'Regional Field Office XI',
+                'Regional Field Office XII',
+                'Regional Field Office CARAGA',
+                'Agricultural Training Institute',
+                'Bureau of Agriculture and Fisheries Engineering',
+                'Bureau of Agriculture and Fisheries Standards',
+                'Bureau of Animal Industry',
+                'Bureau of Agricultural Research',
+                'Bureau of Plant Industry',
+                'Bureau of Soils and Water Management',
+                'Philippine Rubber Research Institute',
+//            ],
+            'Agricultural Credit Policy Council',
+            'Bureau of Fisheries and Aquatic Resources',
+            'Fertilizer and Pesticide Authority',
+            'National Fisheries Research and Development Institute',
+            'National Meat Inspection Service',
+            'Philippine Carabao Center',
+            'Philippine Center for Post-Harvest Development and Mechanization',
+            'Philippine Fiber Industry Development Authority',
+            'Philippine Council for Agriculture and Fisheries',
+            'National Dairy Authority',
+            'National Food Authority',
+            'National Irrigation Administration',
+            'National Tobacco Administration',
+            'Philippine Coconut Authority',
+            'Philippine Fisheries Development Authority',
+            'Philippine Rice Research Institute',
+            'Sugar Regulatory Administration',
+        ];
+
+        foreach ($ous as $ou) {
+            OperatingUnit::create([
+                'name' => $ou,
+                'label'=> $ou,
+            ]);
         }
     }
 }

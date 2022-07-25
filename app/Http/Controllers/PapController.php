@@ -23,7 +23,7 @@ class PapController extends Controller
      */
     public function create()
     {
-        //
+        return view('paps.create');
     }
 
     /**

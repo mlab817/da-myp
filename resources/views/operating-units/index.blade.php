@@ -29,12 +29,6 @@
                     <th style="width: 30%">
                         PREXC Programs
                     </th>
-                    <th>
-                        Project Progress
-                    </th>
-                    <th style="width: 8%" class="text-center">
-                        Active
-                    </th>
                     <th style="width: 20%" class="text-center">
                         Actions
                     </th>
@@ -44,7 +38,7 @@
                 @foreach($operating_units as $operating_unit)
                     <tr>
                         <td>
-                            #
+                            {{ $operating_unit->id }}
                         </td>
                         <td>
                             <a>
@@ -56,19 +50,9 @@
                             </small>
                         </td>
                         <td class="project_progress">
-                            <div class="progress progress-sm">
-                                <div class="progress-bar bg-green" role="progressbar" aria-valuenow="57" aria-valuemin="0" aria-valuemax="100" style="width: 57%">
-                                </div>
-                            </div>
-                            <small>
-                                57% Complete
-                            </small>
-                        </td>
-                        <td class="project-state">
-
-                        </td>
-                        <td class="project-state">
-
+                            @foreach($operating_unit->prexcs as $prexc)
+                                <small class="badge badge-success">{{$prexc->name}}</small>
+                            @endforeach
                         </td>
                         <td class="text-nowrap text-center">
                             <a class="btn btn-primary btn-sm" href="{{ route('operating-units.show', $operating_unit) }}">

@@ -9,6 +9,11 @@ class OperatingUnit extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'label',
+    ];
+
     public function prexcs()
     {
         return $this->belongsToMany(Prexc::class, 'ou_prexc');

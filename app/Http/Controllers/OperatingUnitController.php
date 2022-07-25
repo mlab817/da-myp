@@ -72,7 +72,11 @@ class OperatingUnitController extends Controller
      */
     public function update(Request $request, OperatingUnit $operatingUnit)
     {
-        //
+        $operatingUnit->update($request->only('name','label'));
+
+        $operatingUnit->prexcs()->sync($request->prexcs);
+
+        return back();
     }
 
     /**

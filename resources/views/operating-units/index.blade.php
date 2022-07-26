@@ -11,9 +11,10 @@
         <div class="card-header">
             <h3 class="card-title">Operating Units</h3>
             <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                    <i class="fas fa-minus"></i>
-                </button>
+                <a href="{{ route('operating-units.create') }}" class="btn btn-primary">
+                    <i class="fas fa-plus"></i>
+                    Add
+                </a>
             </div>
         </div>
         <div class="card-body p-0">

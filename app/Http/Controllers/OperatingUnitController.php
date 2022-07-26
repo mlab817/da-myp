@@ -26,7 +26,7 @@ class OperatingUnitController extends Controller
      */
     public function create()
     {
-        //
+        return view('operating-units.create');
     }
 
     /**

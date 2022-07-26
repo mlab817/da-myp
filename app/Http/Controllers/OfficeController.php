@@ -27,7 +27,7 @@ class OfficeController extends Controller
      */
     public function create()
     {
-        return view('offices.create')
+        return view('offices.form')
             ->with(['operating_units' => OperatingUnit::all()]);
     }
 

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\LoginKey;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Str;
 
 class LoginController extends Controller
 {
@@ -36,5 +38,16 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function showLoginForm()
+    {
+        $key = Str::random(32);
+
+        $loginKey = LoginKey::create([
+            'key' => $key
+        ]);
+
+        return view('auth.login')->with(['loginKey' => $key]);
     }
 }

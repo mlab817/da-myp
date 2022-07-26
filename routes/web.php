@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginViaSecretController;
 use App\Http\Controllers\OfficeController;
 use App\Http\Controllers\OperatingUnitController;
 use App\Http\Controllers\PapController;
 use App\Http\Controllers\UserController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,11 +21,11 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::redirect('/', '/dashboard');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-});
+})->name('dashboard');
 
 Route::resource('offices', OfficeController::class);
 
@@ -32,3 +34,6 @@ Route::resource('operating-units', OperatingUnitController::class);
 Route::resource('paps', PapController::class);
 
 Route::resource('users', UserController::class);
+
+Route::post('/login-via-secret', LoginViaSecretController::class)
+    ->name('login-via-secret');

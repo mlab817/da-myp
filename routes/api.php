@@ -22,3 +22,9 @@ Route::get('/prexcs', function () {
     $data = \App\Models\Prexc::where('level', 0)->with('children.children')->get();
     return response()->json($data);
 });
+
+Route::post('/login', \App\Http\Controllers\API\LoginViaCredentialsController::class);
+
+Route::get('/me', \App\Http\Controllers\API\MeController::class);
+
+Route::post('/login-via-qr', \App\Http\Controllers\API\LoginViaQrController::class);

@@ -31,8 +31,6 @@ Route::resource('offices', OfficeController::class);
 
 Route::resource('operating-units', OperatingUnitController::class);
 
-Route::resource('paps', PapController::class);
-
 Route::resource('users', UserController::class);
 
 Route::post('/login-via-secret', LoginViaSecretController::class)

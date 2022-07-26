@@ -13,19 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->foreignId('operating_unit_id')
-                ->nullable()
+        Schema::create('prexc_encoder', function (Blueprint $table) {
+            $table->foreignId('prexc_id')
                 ->constrained()
-                ->nullOnDelete();
-            $table->boolean('is_admin')
-                ->default(0);
+                ->cascadeOnDelete();
             $table->foreignId('user_type_id')
-                ->nullable()
                 ->constrained()
-                ->nullOnDelete();
-            $table->boolean('is_active')
-                ->default(1);
+                ->cascadeOnDelete();
         });
     }
 
@@ -36,8 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('prexc_encoder');
     }
 };

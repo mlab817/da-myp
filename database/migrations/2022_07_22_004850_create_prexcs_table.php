@@ -26,6 +26,14 @@ return new class extends Migration
                 ->nullable()
                 ->constrained('prexcs')
                 ->nullOnDelete();
+            $table->boolean('national_only')
+                ->default(0);
+            $table->boolean('requires_regional_recommendation')
+                ->default(0);
+            $table->foreignId('approver_id')
+                ->nullable()
+                ->constrained('user_types')
+                ->nullOnDelete();
             $table->timestamps();
         });
     }

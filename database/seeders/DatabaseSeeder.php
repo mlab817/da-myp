@@ -10,6 +10,7 @@ use App\Models\OperatingUnit;
 use App\Models\Prexc;
 use App\Models\Program;
 use App\Models\Role;
+use App\Models\UserType;
 use App\Models\ValueChainSegment;
 use Illuminate\Database\Seeder;
 
@@ -150,19 +151,6 @@ class DatabaseSeeder extends Seeder
         foreach ($segments as $segment) {
             ValueChainSegment::create([
                 'name' => $segment,
-            ]);
-        }
-
-        $roles = [
-            'admin',
-            'reviewer',
-            'viewer',
-            'encoder',
-        ];
-
-        foreach ($roles as $role) {
-            Role::create([
-                'name' => $role
             ]);
         }
 
@@ -359,18 +347,18 @@ class DatabaseSeeder extends Seeder
 
         // create top level
         foreach ($prexcs as $k0 => $value0) {
-            $prexc0 = Prexc::create([
-                'name' => $k0,
-                'level' => 0,
-            ]);
-
             // if the value is array,
             if (is_array($value0)) {
+                $prexc0 = Prexc::create([
+                    'name' => $k0,
+                    'level' => 0,
+                ]);
+
                 foreach ($value0 as $k1 => $value1) {
                     if (is_int($k1)) {
                         $prexc1 = Prexc::create([
                             'name' => $value1,
-                            'level' => 1,
+                            'level' => 2,
                             'parent_id' => $prexc0->id,
                         ]);
                     } else {
@@ -400,6 +388,11 @@ class DatabaseSeeder extends Seeder
                         }
                     }
                 }
+            } else {
+                $prexc0 = Prexc::create([
+                    'name' => $value0,
+                    'level' => 0,
+                ]);
             }
         }
 
@@ -453,6 +446,60 @@ class DatabaseSeeder extends Seeder
             OperatingUnit::create([
                 'name' => $ou,
                 'label'=> $ou,
+            ]);
+        }
+
+        $userTypes = [
+            'co_rice',
+            'co_livestock',
+            'co_corn',
+            'co_hvcdp',
+            'co_organic',
+            'co_amas',
+            'co_halal',
+            'co_fmrdp',
+            'co_prs',
+            'co_regulatory',
+            'co_rcef',
+            'co_4ks',
+            'co_saad',
+            'co_prdp',
+            'co_acpc',
+            'co_bfar',
+            'co_fpa',
+            'co_nfrdi',
+            'co_nmis',
+            'co_pcc',
+            'co_philmech',
+            'co_pcaf',
+            'co_philfida',
+            'co_nia',
+            'co_nda',
+            'co_nfa',
+            'co_nta',
+            'co_pca',
+            'co_pfda',
+            'co_philrice',
+            'co_sra',
+            'ro_pmed',
+            'ro_amad',
+            'ro_ild',
+            'ro_rice',
+            'ro_corn',
+            'ro_livestock',
+            'ro_hvcdp',
+            'ro_nupap',
+            'ro_organic',
+            'ro_halal',
+            'ro_raed',
+            'ro_prdp',
+            'ro_ati',
+            'ro_bfar',
+        ];
+
+        foreach ($userTypes as $type) {
+            UserType::create([
+                'name' => $type,
             ]);
         }
     }

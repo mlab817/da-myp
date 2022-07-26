@@ -13,11 +13,37 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('indicators', function (Blueprint $table) {
+        Schema::create('subactivities', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('pap_id')
+            $table->uuid();
+            $table->foreignId('operating_unit_id')
+                ->nullable()
                 ->constrained()
-                ->cascadeOnDelete();
+                ->nullOnDelete(); // none
+            $table->foreignId('strategy_id')
+                ->nullable()
+                ->constrained()
+                ->nullOnDelete(); // A
+            $table->text('subactivity')
+                ->nullable(); // E
+            $table->foreignId('commodity_system_id')
+                ->nullable()
+                ->constrained()
+                ->nullOnDelete(); //D
+            $table->foreignId('commodity_id')
+                ->nullable()
+                ->constrained()
+                ->nullOnDelete(); // C
+            $table->foreignId('value_chain_segment_id')
+                ->nullable()
+                ->constrained()
+                ->nullOnDelete(); // H
+            $table->foreignId('program_id')
+                ->nullable()
+                ->constrained()
+                ->nullOnDelete(); // B
+            $table->text('brief_description')
+                ->nullable(); // F
             $table->foreignId('prexc_id')
                 ->nullable()
                 ->constrained()
@@ -49,6 +75,7 @@ return new class extends Migration
                 ->constrained()
                 ->nullOnDelete();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -59,6 +86,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('indicators');
+        Schema::dropIfExists('subactivities');
     }
 };

@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\LoginViaSecretController;
 use App\Http\Controllers\OfficeController;
 use App\Http\Controllers\OperatingUnitController;
 use App\Http\Controllers\PapController;
+use App\Http\Controllers\PrexcController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -30,6 +31,8 @@ Route::get('/dashboard', function () {
 Route::resource('offices', OfficeController::class);
 
 Route::resource('operating-units', OperatingUnitController::class);
+
+Route::resource('prexcs', PrexcController::class);
 
 Route::resource('users', UserController::class);
 

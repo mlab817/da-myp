@@ -26,6 +26,10 @@ return new class extends Migration
                 ->nullable()
                 ->constrained('prexcs')
                 ->nullOnDelete();
+            $table->foreignId('operating_unit_id')
+                ->nullable()
+                ->constrained('operating_units')
+                ->nullOnDelete(); // level 0 only
             $table->boolean('national_only')
                 ->default(0);
             $table->boolean('requires_regional_recommendation')

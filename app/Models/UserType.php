@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class UserType extends Model
 {
     use HasFactory;
+
+    public function encodes()
+    {
+        return $this->belongsToMany(Prexc::class, 'prexc_encoder');
+    }
 }

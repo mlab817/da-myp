@@ -16,6 +16,9 @@ return new class extends Migration
         Schema::create('user_types', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->boolean('approver')->default(0);
+            $table->boolean('recommender')->default(0);
+            $table->boolean('encoder')->default(0);
             $table->timestamps();
         });
     }
